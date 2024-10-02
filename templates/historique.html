@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% include 'includes/navbar2.html' %}
+
+    <div class="container">
+        <section class="py-5">
+            <div class="container">
+                <h2 class="display-4">Historique des Réservations</h2>
+                <div class="row">
+                    {% for reservation in reservations %}
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Chambre {{ reservation.numero }}</h5>
+                                    <p class="card-text">Date de début : {{ reservation.date_debut }}</p>
+                                    <p class="card-text">Date de fin : {{ reservation.date_fin }}</p>
+<form action="{{ url_for('annuler_reservation', reservation_id=reservation.id) }}" method="POST">
+    <button type="submit" class="btn btn-danger">Annuler réservation</button>
+</form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

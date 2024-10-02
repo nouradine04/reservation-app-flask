@@ -1,0 +1,31 @@
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-grey">
+  <div class="container">
+    <a class="navbar-brand me-2" href="https://mdbgo.com/">
+      <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.webp" height="16" alt="" loading="lazy"
+        style="margin-top: -1px;"/>
+    </a>
+    <button class="navbar-toggler" type="button" (click)="buttonsNav.toggle()" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-link px-3 me-2">
+              <a href="{{url_for('login')}}" style="color: white"> Connexion</a>
+        </button>
+        <button type="button" class="btn btn-primary me-3">
+           <a href="{{url_for('inscription')}}" style="color: white;border-style: none; ">S'inscrire gratuitement</a>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</nav>
+<style>
+    .bg-grey {
+            background-color:  rgba(0, 0, 0, 0.2);;
+        }
+</style>

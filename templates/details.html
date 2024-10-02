@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section class="py-5">
+  <div class="container">
+    <h2 class="display-4">Détails de la chambre {{ chambre.numero }}</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="{{ url_for('static', filename='uploads/' + chambre.image) }}" class="card-img-top" alt="{{ chambre.numero }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ chambre.numero }}</h5>
+            <p class="card-text">{{ chambre.description }}</p>
+            <p class="card-text"><strong>Prix :</strong> {{ chambre.prix }} €</p>
+            {% if chambre.est_reservee %}
+            <p class="text-danger">Cette chambre est actuellement réservée.</p>
+            {% else %}
+            <a href="{{ url_for('reservation', chambre_id=chambre.id) }}" class="btn btn-success">Réserver</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

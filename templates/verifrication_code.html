@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  <section class="py-5">
+    <div class="container">
+      <h2 class="display-4">Vérification du Code</h2>
+      <p class="lead">Veuillez entrer le code de vérification envoyé à votre adresse e-mail</p>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="{{url_for('verification_code')}}" method="POST" >
+            <div class="mb-3">
+              <label for="email" class="form-label">Adresse e-mail</label>
+              <input type="email" class="form-control"  name="email" />
+            </div>
+            <div class="mb-3">
+              <label for="code" class="form-label">Code de vérification</label>
+              <input type="text" class="form-control" required name="verification_code"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Vérifier</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h5 class="card-title">Informations de vérification</h5>
+          <p class="card-text">Si vous n'avez pas reçu le code de vérification, veuillez vérifier votre boîte de réception ou votre dossier de spam.</p>
+          <p class="card-text">Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

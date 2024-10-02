@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <header class="bg-primary text-white py-5">
+      <div class="container">
+        <h1 class="display-4">Bienvenue sur notre application de réservation d'hôtel</h1>
+        <p class="lead">Inscrivez-vous pour commencer à réserver votre Chambre.</p>
+      </div>
+    </header>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="alert-container">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+          <form action="{{url_for('inscription')}}" method="POST">
+            <div class="mb-3">
+              <label for="nom" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="nom" name="nom"/>
+            </div>
+            <div class="mb-3">
+              <label for="prenom" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="prenom" name="prenom" />
+            </div>
+            <label for="prenom" class="form-label">Telephone</label>
+            <input type="text" class="form-control" id="tel" name="tel" />
+            <div class="mb-3">
+                <label for="email" class="form-label">Adresse e-mail</label>
+                <input type="email" class="form-control" id="email"  name="email"/>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password"  name="password"/>
+              </div>
+
+              <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-image: url('../static/images/back3.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+section {
+  padding: 50px 0;
+}
+
+form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: #337ab7;
+  color: #fff;
+  border:gray;}
+</style>
+{% endblock %}
